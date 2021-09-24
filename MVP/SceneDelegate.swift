@@ -18,9 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
-        let viewController = TableViewDisplayViewController(nibName: nil, bundle: nil)
+        let display = TableDisplay()
 
-        let navigationController = UINavigationController(rootViewController: viewController)
+        let presenter = TablePresenter(display: display)
+        display.presenter = presenter
+
+        let navigationController = UINavigationController(rootViewController: display)
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
     }
