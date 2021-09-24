@@ -1,14 +1,6 @@
-//
-//  SceneDelegate.swift
-//  MVP
-//
-//  Created by Tiz on 27/8/21.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
 
     func scene(
@@ -24,8 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         display.presenter = presenter
 
         let navigationController = UINavigationController(rootViewController: display)
-        self.window?.rootViewController = navigationController
-        self.window?.makeKeyAndVisible()
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
-
 }

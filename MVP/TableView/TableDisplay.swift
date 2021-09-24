@@ -1,10 +1,3 @@
-//
-//  TableViewDisplayViewController.swift
-//  MVP
-//
-//  Created by Tiz on 28/8/21.
-//
-
 import UIKit
 
 protocol TableDisplaying: Displaying {
@@ -12,19 +5,18 @@ protocol TableDisplaying: Displaying {
 }
 
 final class TableDisplay: UIViewController {
-    private let tableView: UITableView
+    var presenter: Presenting!
+
     private var sections: [TableSectionItem] = [] {
         didSet {
             tableView.reloadData()
         }
     }
-
+    private let tableView: UITableView
     private let containerView = UIView(frame: .zero)
 
-    var presenter: Presenting!
-
     init(
-        tableView: UITableView = UITableView(frame: .zero, style: .grouped)
+        tableView: UITableView = UITableView(frame: .zero, style: .plain)
     ) {
         self.tableView = tableView
         super.init(nibName: nil, bundle: nil)
@@ -44,25 +36,14 @@ final class TableDisplay: UIViewController {
 
         view.addSubview(containerView)
 
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate(view.constraintsForAnchoringTo(boundsOf: containerView))
+        NSLayoutConstraint.activate(
+            view.constraintsForAnchoringTo(boundsOf: containerView)
+        )
 
         containerView.addSubview(tableView)
 
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(
-            [
-                containerView.topAnchor.constraint(equalTo: tableView.topAnchor),
-                containerView.leadingAnchor.constraint(
-                    equalTo: tableView.leadingAnchor
-                ),
-                containerView.bottomAnchor.constraint(
-                    equalTo: tableView.bottomAnchor
-                ),
-                containerView.trailingAnchor.constraint(
-                    equalTo: tableView.trailingAnchor
-                ),
-            ]
+            containerView.constraintsForAnchoringTo(boundsOf: tableView)
         )
     }
 
@@ -107,6 +88,11 @@ extension TableDisplay: UITableViewDataSource {
 }
 
 extension TableDisplay: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        sections[indexPath.section].items[indexPath.row]
+            .action?()
+    }
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if let header = sections[section].header, header.isDisplayable {
             return UITableView.automaticDimension

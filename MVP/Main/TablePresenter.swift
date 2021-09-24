@@ -1,11 +1,4 @@
-//
-//  Presenter.swift
-//  MVP
-//
-//  Created by Kshitiz Ghimire on 24/9/21.
-//
-
-import Foundation
+import UIKit
 
 final class TablePresenter: Presenting {
     private weak var display: TableDisplay!
@@ -21,12 +14,13 @@ final class TablePresenter: Presenting {
 
         let items: [CellDisplaying] = {
             return [
-                LabelItem(title: "Row1"),
+                LabelItem(title: "Row1") { print("Row 1") },
                 LabelItem(title: "Row2"),
                 LabelItem(title: "Row3"),
                 LabelItem(title: "Row4"),
             ]
         }()
+
         display.set(
             sections: [
                 TableSectionItem(
@@ -34,6 +28,22 @@ final class TablePresenter: Presenting {
                     items: items,
                     footer: LabelItem(title: "Footer")
                 )
+            ]
+        )
+
+        display.leftBarButtonItems(
+            [
+                NavigationItem(type: .text(title: "Left")) {
+                    print("Left button tapped")
+                }
+            ]
+        )
+
+        display.rightBarButtonItems(
+            [
+                NavigationItem(type: .icon(image: UIImage(systemName: "car")!)) {
+                    print("Right button tapped")
+                }
             ]
         )
     }

@@ -1,10 +1,3 @@
-//
-//  ReuseIdentifiable.swift
-//  MVP
-//
-//  Created by Tiz on 28/8/21.
-//
-
 import UIKit
 
 protocol ReuseIdentifiable {

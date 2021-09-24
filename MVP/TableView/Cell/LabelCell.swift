@@ -1,14 +1,16 @@
-//
-//  LabelCell.swift
-//  MVP
-//
-//  Created by Tiz on 28/8/21.
-//
-
 import UIKit
 
 struct LabelItem {
     let title: String
+    let action: (() -> Void)?
+
+    init(
+        title: String,
+        action: (() -> Void)? = nil
+    ) {
+        self.title = title
+        self.action = action
+    }
 }
 
 final class LabelView: UIView {

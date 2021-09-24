@@ -1,10 +1,3 @@
-//
-//  TitleDisplaying.swift
-//  MVP
-//
-//  Created by Tiz on 24/9/21.
-//
-
 import UIKit
 
 protocol TitleDisplaying {
@@ -17,4 +10,4 @@ extension TitleDisplaying where Self: UIViewController {
     }
 }
 
-protocol Displaying: TitleDisplaying {}
+protocol Displaying: TitleDisplaying, NavigationItemDisplaying {}

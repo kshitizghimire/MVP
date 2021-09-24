@@ -1,10 +1,3 @@
-//
-//  UIView+Constraints.swift
-//  MVP
-//
-//  Created by Tiz on 24/9/21.
-//
-
 import UIKit
 
 extension UIView {
