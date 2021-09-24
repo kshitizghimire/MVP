@@ -21,14 +21,20 @@ final class TablePresenter: Presenting {
 
         let items: [CellDisplaying] = {
             return [
-                LabelItem(title: "row2"),
-                LabelItem(title: "row2"),
-                LabelItem(title: "row2"),
-                LabelItem(title: "row2"),
+                LabelItem(title: "Row1"),
+                LabelItem(title: "Row2"),
+                LabelItem(title: "Row3"),
+                LabelItem(title: "Row4"),
             ]
         }()
         display.set(
-            sections: [TableSectionItem(items: items)]
+            sections: [
+                TableSectionItem(
+                    header: LabelItem(title: "Header"),
+                    items: items,
+                    footer: LabelItem(title: "Footer")
+                )
+            ]
         )
     }
 }
