@@ -9,5 +9,3 @@ extension TitleDisplaying where Self: UIViewController {
         self.title = title
     }
 }
-
-protocol Displaying: TitleDisplaying, NavigationItemDisplaying {}

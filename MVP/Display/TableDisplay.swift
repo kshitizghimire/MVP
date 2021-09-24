@@ -35,19 +35,18 @@ final class TableDisplay: UIViewController {
         super.loadView()
 
         view.addSubview(containerView)
-
         NSLayoutConstraint.activate(
             view.constraintsForAnchoringTo(boundsOf: containerView)
         )
 
         containerView.addSubview(tableView)
-
         NSLayoutConstraint.activate(
             containerView.constraintsForAnchoringTo(boundsOf: tableView)
         )
     }
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         presenter.viewDidLoad()
     }
 
