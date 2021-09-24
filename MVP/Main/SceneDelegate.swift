@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         let display = TableDisplay()
 
-        let presenter = TablePresenter(display: display)
+        let presenter = DemoScreenPresenter(display: display)
         display.presenter = presenter
 
         let navigationController = UINavigationController(rootViewController: display)

@@ -1,6 +1,6 @@
 import UIKit
 
-final class TablePresenter: Presenting {
+final class DemoScreenPresenter: Presenting {
     private weak var display: TableDisplay!
 
     init(
@@ -33,8 +33,22 @@ final class TablePresenter: Presenting {
 
         display.leftBarButtonItems(
             [
-                NavigationItem(type: .text(title: "Left")) {
+                NavigationItem(type: .text(title: "Left")) { [weak self] in
                     print("Left button tapped")
+                    let count = Int.random(in: 0...20)
+                    let items = (0..<count)
+                        .map { i in
+                            LabelItem(title: "Row\(i)") { print("Row \(i)") }
+                        }
+                    self?.display
+                        .set(sections: [
+                            TableSectionItem(
+                                header: LabelItem(title: "Header"),
+                                items: items,
+                                footer: LabelItem(title: "Footer")
+                            )
+                        ]
+                        )
                 }
             ]
         )
