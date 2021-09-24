@@ -7,34 +7,21 @@
 
 import UIKit
 
-protocol TitleDisplaying {
-
-    func set(title: String?)
-}
-
-extension TitleDisplaying where Self: UIViewController {
-
-    func set(title: String?) {
-        self.title = title
-    }
-}
-
-protocol Displaying: TitleDisplaying {}
 protocol TableDisplaying: Displaying {
-    func set(sections: [ListSectionItem])
+    func set(sections: [TableSectionItem])
 }
 
 final class TableDisplay: UIViewController {
-    let tableView: UITableView
-    private var sections: [ListSectionItem] = [] {
+    private let tableView: UITableView
+    private var sections: [TableSectionItem] = [] {
         didSet {
             tableView.reloadData()
         }
     }
 
-    let containerView = UIView(frame: .zero)
+    private let containerView = UIView(frame: .zero)
 
-    var presenter: TablePresenting!
+    var presenter: Presenting!
 
     init(
         tableView: UITableView = UITableView(frame: .zero, style: .grouped)
@@ -54,55 +41,57 @@ final class TableDisplay: UIViewController {
 
     override func loadView() {
         super.loadView()
-        self.view.backgroundColor = .lightGray
-        self.view.addSubview(containerView)
+
+        view.addSubview(containerView)
 
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate(
-            [
-                containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                containerView.leadingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.leadingAnchor
-                ),
-                containerView.bottomAnchor.constraint(
-                    equalTo: view.bottomAnchor
-                ),
-                containerView.trailingAnchor.constraint(
-                    equalTo: view.safeAreaLayoutGuide.trailingAnchor
-                ),
-            ]
-        )
-
-        tableView.backgroundColor = .red
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate(view.constraintsForAnchoringTo(boundsOf: containerView))
 
         containerView.addSubview(tableView)
 
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(
             [
-                tableView.topAnchor.constraint(equalTo: containerView.topAnchor),
-                tableView.leadingAnchor.constraint(
-                    equalTo: containerView.leadingAnchor
+                containerView.topAnchor.constraint(equalTo: tableView.topAnchor),
+                containerView.leadingAnchor.constraint(
+                    equalTo: tableView.leadingAnchor
                 ),
-                tableView.bottomAnchor.constraint(
-                    equalTo: containerView.bottomAnchor
+                containerView.bottomAnchor.constraint(
+                    equalTo: tableView.bottomAnchor
                 ),
-                tableView.trailingAnchor.constraint(
-                    equalTo: containerView.trailingAnchor
+                containerView.trailingAnchor.constraint(
+                    equalTo: tableView.trailingAnchor
                 ),
             ]
         )
-
     }
 
     override func viewDidLoad() {
         presenter.viewDidLoad()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.viewWillAppear()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenter.viewDidAppear()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter.viewWillDisappear()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        presenter.viewDidDisappear()
+    }
 }
 
 extension TableDisplay: UITableViewDataSource {
-
     func numberOfSections(in tableView: UITableView) -> Int {
         sections.count
     }
@@ -118,9 +107,7 @@ extension TableDisplay: UITableViewDataSource {
 }
 
 extension TableDisplay: UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-
         if let header = sections[section].header, header.isDisplayable {
             return UITableView.automaticDimension
         }
@@ -151,7 +138,7 @@ extension TableDisplay: UITableViewDelegate {
 }
 
 extension TableDisplay: TableDisplaying {
-    func set(sections: [ListSectionItem]) {
+    func set(sections: [TableSectionItem]) {
         self.sections = sections
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TablePresenting {
+protocol Presenting {
     func viewDidLoad()
     func viewWillAppear()
     func viewDidAppear()
@@ -15,8 +15,8 @@ protocol TablePresenting {
     func viewDidDisappear()
 
 }
-extension TablePresenting {
 
+extension Presenting {
     func viewDidLoad() {}
     func viewWillAppear() {}
     func viewDidAppear() {}

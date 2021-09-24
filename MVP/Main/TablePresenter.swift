@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TablePresenter: TablePresenting {
+final class TablePresenter: Presenting {
     private weak var display: TableDisplay!
 
     init(
@@ -19,17 +19,16 @@ class TablePresenter: TablePresenting {
     func viewDidLoad() {
         display.set(title: "Hello")
 
-        let items: [CellDisplayable] = {
+        let items: [CellDisplaying] = {
             return [
                 LabelItem(title: "row2"),
-
                 LabelItem(title: "row2"),
                 LabelItem(title: "row2"),
                 LabelItem(title: "row2"),
             ]
         }()
         display.set(
-            sections: [ListSectionItem(items: items)]
+            sections: [TableSectionItem(items: items)]
         )
     }
 }
