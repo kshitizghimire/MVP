@@ -197,6 +197,7 @@
 				76ED8D6926D8D8B2002FD6EF /* Frameworks */,
 				76ED8D6A26D8D8B2002FD6EF /* Resources */,
 				76C52DB826DA386700853812 /* Format */,
+				7642B8C126FE023E00489E81 /* Lint */,
 			);
 			buildRules = (
 			);
@@ -251,6 +252,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7642B8C126FE023E00489E81 /* Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Lint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"/opt/homebrew/bin:$PATH\"\nif which swift-format >/dev/null; then\n    swift-format -m lint -r ./ --configuration swift-format.json\nelse\n    echo \"warning: swift-format not installed\"\nfi\n\n";
+		};
 		76C52DB826DA386700853812 /* Format */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

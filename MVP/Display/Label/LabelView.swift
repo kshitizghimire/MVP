@@ -1,7 +1,6 @@
 import UIKit
 
 final class LabelView: UIView {
-    private var item: LabelItem?
     private var label: UILabel = UILabel(frame: .zero)
 
     override init(
@@ -20,8 +19,6 @@ final class LabelView: UIView {
     }
 
     func configure(with item: LabelItem) {
-        self.item = item
-
         label.text = item.title
     }
 }
