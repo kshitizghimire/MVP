@@ -1,16 +1,5 @@
 import Foundation
 
-struct Coin: Codable {
-    let id: String // swiftlint:disable:this identifier_name
-    let symbol: String
-    let name: String
-    let image: String
-}
-
-enum CoinLoaderError: Error {
-    case general
-}
-
 protocol CoinLoading {
     func load(completion: @escaping ([Coin]) -> Void)
 }

@@ -1,10 +1,10 @@
 import Foundation
 
-final class RemoteNetworkMainQueueDispatchDecorator: Networking {
+final class MainThreadNetwork: Networking {
     let decoratee: Networking
 
     init(
-        decoratee: Networking
+        _ decoratee: Networking
     ) {
         self.decoratee = decoratee
     }

@@ -1,4 +1,5 @@
 import Foundation
+
 final class CoinsPresenter: Presenting {
     private weak var display: TableDisplay!
     private let coinLoader: CoinLoading
@@ -12,6 +13,8 @@ final class CoinsPresenter: Presenting {
     }
 
     func viewDidLoad() {
+        display.set(title: "Coins")
+
         coinLoader.load { [weak self] coins in
             let items: [CellDisplaying] = coins.map {
                 LabelItem(title: $0.name)

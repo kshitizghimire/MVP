@@ -13,9 +13,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let display = TableDisplay()
 
         let network = RemoteNetwork()
-        let mainQueueDispatcher = RemoteNetworkMainQueueDispatchDecorator(decoratee: network)
+        let mainThreadNetwork = MainThreadNetwork(network)
         let coinLoader = CoinLoader(
-            network: mainQueueDispatcher,
+            network: mainThreadNetwork,
             request: AppConfiguration.coinRequest,
             decoder: JSONDecoder()
         )
