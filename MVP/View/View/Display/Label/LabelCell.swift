@@ -1,6 +1,6 @@
 import UIKit
 
-final class LabelCell: UITableViewCell {
+public final class LabelCell: UITableViewCell {
     private let labelView = LabelView(frame: .zero)
 
     override init(

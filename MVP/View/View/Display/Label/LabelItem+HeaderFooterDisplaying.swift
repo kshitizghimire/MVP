@@ -1,7 +1,7 @@
 import UIKit
 
 extension LabelItem: HeaderFooterDisplaying {
-    func view(from tableView: UITableView, for _: Int) -> UIView {
+    public func view(from tableView: UITableView, for _: Int) -> UIView {
         tableView.register(
             LabelHeaderFooter.self,
             forHeaderFooterViewReuseIdentifier: LabelHeaderFooter.identifier

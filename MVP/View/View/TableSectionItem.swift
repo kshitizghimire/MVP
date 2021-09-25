@@ -1,11 +1,11 @@
 import UIKit
 
-struct TableSectionItem {
+public struct TableSectionItem {
     let header: HeaderFooterDisplaying?
     let items: [CellDisplaying]
     let footer: HeaderFooterDisplaying?
 
-    init(
+    public init(
         header: HeaderFooterDisplaying? = nil,
         items: [CellDisplaying] = [],
         footer: HeaderFooterDisplaying? = nil
@@ -16,23 +16,23 @@ struct TableSectionItem {
     }
 }
 
-protocol HeaderFooterDisplaying {
+public protocol HeaderFooterDisplaying {
     var isDisplayable: Bool { get }
     func view(from tableView: UITableView, for section: Int) -> UIView
 }
 
-extension HeaderFooterDisplaying {
+public extension HeaderFooterDisplaying {
     var isDisplayable: Bool {
         true
     }
 }
 
-protocol CellDisplaying {
+public protocol CellDisplaying {
     var action: (() -> Void)? { get }
     func cell(from tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell
 }
 
-extension CellDisplaying {
+public extension CellDisplaying {
     var action: (() -> Void)? {
         nil
     }

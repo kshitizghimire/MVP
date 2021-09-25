@@ -1,10 +1,10 @@
 import UIKit
 
-protocol TitleDisplaying {
+public protocol TitleDisplaying {
     func set(title: String)
 }
 
-extension TitleDisplaying where Self: UIViewController {
+public extension TitleDisplaying where Self: UIViewController {
     func set(title: String) {
         self.title = title
     }

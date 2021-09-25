@@ -1,11 +1,11 @@
 import UIKit
 
-protocol NavigationItemDisplaying {
+public protocol NavigationItemDisplaying {
     func leftBarButtonItems(_ items: [NavigationItem])
     func rightBarButtonItems(_ items: [NavigationItem])
 }
 
-extension NavigationItemDisplaying where Self: UIViewController {
+public extension NavigationItemDisplaying where Self: UIViewController {
     func leftBarButtonItems(_ items: [NavigationItem]) {
         navigationItem.leftBarButtonItems = items.map(\.barButtonItem)
     }
@@ -15,7 +15,7 @@ extension NavigationItemDisplaying where Self: UIViewController {
     }
 }
 
-extension NavigationItem {
+private extension NavigationItem {
     var barButtonItem: UIBarButtonItem {
         final class NavigationBarButtonItem: UIBarButtonItem {
             private var barButtonAction: (() -> Void)?

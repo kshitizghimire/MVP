@@ -1,6 +1,6 @@
 import UIKit
 
-final class LabelView: UIView {
+public final class LabelView: UIView {
     private var label = UILabel(frame: .zero)
 
     override init(

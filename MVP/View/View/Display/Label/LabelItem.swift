@@ -1,10 +1,10 @@
 import Foundation
 
-struct LabelItem {
+public struct LabelItem {
     let title: String
-    let action: (() -> Void)?
+    public let action: (() -> Void)?
 
-    init(
+    public init(
         title: String,
         action: (() -> Void)? = nil
     ) {
