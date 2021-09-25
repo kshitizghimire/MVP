@@ -2,11 +2,11 @@ import Foundation
 
 final class CoinsPresenter: Presenting {
     private weak var display: TableDisplay!
-    private let coinLoader: CoinLoading
+    private let coinLoader: Loading
 
     init(
         display: TableDisplay,
-        coinLoader: CoinLoading
+        coinLoader: Loading
     ) {
         self.display = display
         self.coinLoader = coinLoader
@@ -15,15 +15,20 @@ final class CoinsPresenter: Presenting {
     func viewDidLoad() {
         display.set(title: "Coins")
 
-        coinLoader.load { [weak self] coins in
-            let items: [CellDisplaying] = coins.map {
-                LabelItem(title: $0.name)
+        coinLoader.load(for: [Coin].self) { [weak self] result in
+            switch result {
+            case let .success(coins):
+                let items: [CellDisplaying] = coins.map {
+                    LabelItem(title: $0.name)
+                }
+                self?.display.set(
+                    sections: [
+                        TableSectionItem(items: items),
+                    ]
+                )
+            case .failure:
+                break
             }
-            self?.display.set(
-                sections: [
-                    TableSectionItem(items: items),
-                ]
-            )
         }
     }
 }
