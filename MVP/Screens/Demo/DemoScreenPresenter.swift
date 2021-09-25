@@ -15,19 +15,19 @@ final class DemoScreenPresenter: Presenting {
 
         let items: [CellDisplaying] = {
             [
-                LabelItem(title: "Row1") { print("Row 1") },
-                LabelItem(title: "Row2"),
-                LabelItem(title: "Row3"),
-                LabelItem(title: "Row4"),
+                Label(text: "Row1") { print("Row 1") },
+                Label(text: "Row2"),
+                Label(text: "Row3"),
+                Label(text: "Row4"),
             ]
         }()
 
         display.set(
             sections: [
-                TableSectionItem(
-                    header: LabelItem(title: "Header"),
+                TableSection(
+                    header: Label(text: "Header"),
                     items: items,
-                    footer: LabelItem(title: "Footer")
+                    footer: Label(text: "Footer")
                 ),
             ]
         )
@@ -39,14 +39,14 @@ final class DemoScreenPresenter: Presenting {
                     let count = Int.random(in: 0 ... 20)
                     let items = (0 ..< count)
                         .map { item in
-                            LabelItem(title: "Row\(item)") { print("Row \(item)") }
+                            Label(text: "Row\(item)") { print("Row \(item)") }
                         }
                     self?.display
                         .set(sections: [
-                            TableSectionItem(
-                                header: LabelItem(title: "Header"),
+                            TableSection(
+                                header: Label(text: "Header"),
                                 items: items,
-                                footer: LabelItem(title: "Footer")
+                                footer: Label(text: "Footer")
                             ),
                         ]
                         )

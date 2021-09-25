@@ -1,6 +1,6 @@
 import UIKit
 
-extension LabelItem: CellDisplaying {
+extension Label: CellDisplaying {
     public func cell(from tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell {
         tableView.register(LabelCell.self, forCellReuseIdentifier: LabelCell.identifier)
         let cell: LabelCell =

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		76008C8D26FEED05006613C2 /* View.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76008C5626FEE11B006613C2 /* View.framework */; };
 		76008C8E26FEED05006613C2 /* View.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76008C5626FEE11B006613C2 /* View.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		76008CBD26FEF6B6006613C2 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76008CBA26FEF6A3006613C2 /* Network.framework */; };
+		76008CBE26FEF6B6006613C2 /* Network.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76008CBA26FEF6A3006613C2 /* Network.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76ED8D7026D8D8B2002FD6EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ED8D6F26D8D8B2002FD6EF /* AppDelegate.swift */; };
 		76ED8D7226D8D8B2002FD6EF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ED8D7126D8D8B2002FD6EF /* SceneDelegate.swift */; };
 		76ED8D7926D8D8B4002FD6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76ED8D7826D8D8B4002FD6EF /* Assets.xcassets */; };
@@ -30,6 +32,20 @@
 			remoteGlobalIDString = 76008C4026FEE11B006613C2;
 			remoteInfo = ViewTests;
 		};
+		76008CB926FEF6A3006613C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76008CB426FEF6A2006613C2 /* Network.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 76008C9A26FEF6A2006613C2;
+			remoteInfo = Network;
+		};
+		76008CBB26FEF6A3006613C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76008CB426FEF6A2006613C2 /* Network.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 76008CA426FEF6A2006613C2;
+			remoteInfo = NetworkTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +56,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				76008C8E26FEED05006613C2 /* View.framework in Embed Frameworks */,
+				76008CBE26FEF6B6006613C2 /* Network.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		76008C5026FEE11B006613C2 /* View.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = View.xcodeproj; path = MVP/View/View.xcodeproj; sourceTree = "<group>"; };
+		76008CB426FEF6A2006613C2 /* Network.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Network.xcodeproj; path = MVP/Network/Network.xcodeproj; sourceTree = "<group>"; };
 		76ED8D6C26D8D8B2002FD6EF /* MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76ED8D6F26D8D8B2002FD6EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76ED8D7126D8D8B2002FD6EF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76008C8D26FEED05006613C2 /* View.framework in Frameworks */,
+				76008CBD26FEF6B6006613C2 /* Network.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +101,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		76008CB526FEF6A2006613C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				76008CBA26FEF6A3006613C2 /* Network.framework */,
+				76008CBC26FEF6A3006613C2 /* NetworkTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		7642B8AC26FDC6F300489E81 /* Main */ = {
@@ -112,6 +140,7 @@
 		76ED8D6326D8D8B2002FD6EF = {
 			isa = PBXGroup;
 			children = (
+				76008CB426FEF6A2006613C2 /* Network.xcodeproj */,
 				76008C5026FEE11B006613C2 /* View.xcodeproj */,
 				76ED8D6E26D8D8B2002FD6EF /* MVP */,
 				76ED8D6D26D8D8B2002FD6EF /* Products */,
@@ -188,6 +217,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 76008CB526FEF6A2006613C2 /* Products */;
+					ProjectRef = 76008CB426FEF6A2006613C2 /* Network.xcodeproj */;
+				},
+				{
 					ProductGroup = 76008C5126FEE11B006613C2 /* Products */;
 					ProjectRef = 76008C5026FEE11B006613C2 /* View.xcodeproj */;
 				},
@@ -212,6 +245,20 @@
 			fileType = wrapper.cfbundle;
 			path = ViewTests.xctest;
 			remoteRef = 76008C5726FEE11B006613C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		76008CBA26FEF6A3006613C2 /* Network.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Network.framework;
+			remoteRef = 76008CB926FEF6A3006613C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		76008CBC26FEF6A3006613C2 /* NetworkTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = NetworkTests.xctest;
+			remoteRef = 76008CBB26FEF6A3006613C2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
