@@ -12,11 +12,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         let display = TableDisplay()
 
-        let network = RemoteNetwork()
+        let network = RemoteNetwork(request: AppConfiguration.coinRequest)
         let mainThreadNetwork = MainThreadNetwork(network)
         let coinLoader = Loader(
             network: mainThreadNetwork,
-            request: AppConfiguration.coinRequest,
             decoder: JSONDecoder()
         )
         let presenter = CoinsPresenter(display: display, coinLoader: coinLoader)

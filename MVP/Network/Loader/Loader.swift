@@ -6,11 +6,10 @@ protocol Loading {
 
 struct Loader: Loading {
     let network: Networking
-    let request: URLRequest
     let decoder: JSONDecoder
 
     func load<T: Decodable>(for _: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
-        network.perform(request: request) { result in
+        network.perform { result in
             switch result {
             case let .success(data):
                 do {
