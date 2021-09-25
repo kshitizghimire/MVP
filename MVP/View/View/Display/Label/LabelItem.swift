@@ -1,14 +1,14 @@
 import Foundation
 
-public struct Label {
-    let text: String
+public struct LabelItem {
+    let title: String
     public let action: (() -> Void)?
 
     public init(
-        text: String,
+        title: String,
         action: (() -> Void)? = nil
     ) {
-        self.text = text
+        self.title = title
         self.action = action
     }
 }

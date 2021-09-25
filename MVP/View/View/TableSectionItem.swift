@@ -1,8 +1,8 @@
 import UIKit
 
-public struct TableSection {
+public struct TableSectionItem {
     let header: HeaderFooterDisplaying?
-    let cells: [CellDisplaying]
+    let items: [CellDisplaying]
     let footer: HeaderFooterDisplaying?
 
     public init(
@@ -11,7 +11,7 @@ public struct TableSection {
         footer: HeaderFooterDisplaying? = nil
     ) {
         self.header = header
-        cells = items
+        self.items = items
         self.footer = footer
     }
 }

@@ -19,7 +19,7 @@ public final class LabelView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with item: Label) {
-        label.text = item.text
+    func configure(with item: LabelItem) {
+        label.text = item.title
     }
 }

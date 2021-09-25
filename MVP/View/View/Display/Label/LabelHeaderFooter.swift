@@ -19,7 +19,7 @@ public final class LabelHeaderFooter: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with item: Label) {
+    func configure(with item: LabelItem) {
         labelView.configure(with: item)
     }
 }
