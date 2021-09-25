@@ -19,11 +19,11 @@ final class CoinsPresenter: Presenting {
             switch result {
             case let .success(coins):
                 let items: [CellDisplaying] = coins.map {
-                    LabelItem(title: $0.name)
+                    Label(text: $0.name)
                 }
                 self?.display.set(
                     sections: [
-                        TableSectionItem(items: items),
+                        TableSection(items: items),
                     ]
                 )
             case .failure:

@@ -1,13 +1,13 @@
 import UIKit
 
 protocol TableDisplaying: Displaying {
-    func set(sections: [TableSectionItem])
+    func set(sections: [TableSection])
 }
 
 final class TableDisplay: UIViewController {
     var presenter: Presenting!
 
-    private var sections: [TableSectionItem] = [] {
+    private var sections: [TableSection] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -79,18 +79,18 @@ extension TableDisplay: UITableViewDataSource {
     }
 
     func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
-        sections[section].items.count
+        sections[section].cells.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        sections[indexPath.section].items[indexPath.row]
+        sections[indexPath.section].cells[indexPath.row]
             .cell(from: tableView, for: indexPath)
     }
 }
 
 extension TableDisplay: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        sections[indexPath.section].items[indexPath.row]
+        sections[indexPath.section].cells[indexPath.row]
             .action?()
     }
 
@@ -122,7 +122,7 @@ extension TableDisplay: UITableViewDelegate {
 }
 
 extension TableDisplay: TableDisplaying {
-    func set(sections: [TableSectionItem]) {
+    func set(sections: [TableSection]) {
         self.sections = sections
     }
 }

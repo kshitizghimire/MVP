@@ -1,16 +1,16 @@
 import UIKit
 
-struct NavigationItem {
-    enum ItemType {
+struct NavigationBarButton {
+    enum BarButtonType {
         case text(title: String)
         case icon(image: UIImage)
     }
 
-    let type: ItemType
+    let type: BarButtonType
     let action: (() -> Void)?
 
     init(
-        type: ItemType,
+        type: BarButtonType,
         action: (() -> Void)? = nil
     ) {
         self.type = type

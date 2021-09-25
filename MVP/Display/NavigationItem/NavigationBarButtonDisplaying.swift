@@ -1,21 +1,21 @@
 import UIKit
 
-protocol NavigationItemDisplaying {
-    func leftBarButtonItems(_ items: [NavigationItem])
-    func rightBarButtonItems(_ items: [NavigationItem])
+protocol NavigationBarButtonDisplaying {
+    func setLeftBarButtons(_ buttons: [NavigationBarButton])
+    func setRightBarButtons(_ buttons: [NavigationBarButton])
 }
 
-extension NavigationItemDisplaying where Self: UIViewController {
-    func leftBarButtonItems(_ items: [NavigationItem]) {
-        navigationItem.leftBarButtonItems = items.map(\.barButtonItem)
+extension NavigationBarButtonDisplaying where Self: UIViewController {
+    func setLeftBarButtons(_ buttons: [NavigationBarButton]) {
+        navigationItem.leftBarButtonItems = buttons.map(\.barButtonItem)
     }
 
-    func rightBarButtonItems(_ items: [NavigationItem]) {
-        navigationItem.rightBarButtonItems = items.map(\.barButtonItem)
+    func setRightBarButtons(_ buttons: [NavigationBarButton]) {
+        navigationItem.rightBarButtonItems = buttons.map(\.barButtonItem)
     }
 }
 
-extension NavigationItem {
+extension NavigationBarButton {
     var barButtonItem: UIBarButtonItem {
         final class NavigationBarButtonItem: UIBarButtonItem {
             private var barButtonAction: (() -> Void)?
