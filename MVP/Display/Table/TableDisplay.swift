@@ -1,11 +1,11 @@
 import UIKit
 
-public protocol TableDisplaying: Displaying {
+protocol TableDisplaying: Displaying {
     func set(sections: [TableSectionItem])
 }
 
-public final class TableDisplay: UIViewController {
-    public var presenter: Presenting!
+final class TableDisplay: UIViewController {
+    var presenter: Presenting!
 
     private var sections: [TableSectionItem] = [] {
         didSet {
@@ -16,7 +16,7 @@ public final class TableDisplay: UIViewController {
     private let tableView: UITableView
     private let containerView = UIView(frame: .zero)
 
-    public init(
+    init(
         tableView: UITableView = UITableView(frame: .zero, style: .plain)
     ) {
         self.tableView = tableView
@@ -33,7 +33,7 @@ public final class TableDisplay: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override public func loadView() {
+    override func loadView() {
         super.loadView()
 
         view.addSubview(containerView)
@@ -47,54 +47,54 @@ public final class TableDisplay: UIViewController {
         )
     }
 
-    override public func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
     }
 
-    override public func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.viewWillAppear()
     }
 
-    override public func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         presenter.viewDidAppear()
     }
 
-    override public func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         presenter.viewWillDisappear()
     }
 
-    override public func viewDidDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         presenter.viewDidDisappear()
     }
 }
 
 extension TableDisplay: UITableViewDataSource {
-    public func numberOfSections(in _: UITableView) -> Int {
+    func numberOfSections(in _: UITableView) -> Int {
         sections.count
     }
 
-    public func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         sections[section].items.count
     }
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         sections[indexPath.section].items[indexPath.row]
             .cell(from: tableView, for: indexPath)
     }
 }
 
 extension TableDisplay: UITableViewDelegate {
-    public func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         sections[indexPath.section].items[indexPath.row]
             .action?()
     }
 
-    public func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if let header = sections[section].header, header.isDisplayable {
             return UITableView.automaticDimension
         } else {
@@ -102,17 +102,17 @@ extension TableDisplay: UITableViewDelegate {
         }
     }
 
-    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         sections[section].header?
             .view(from: tableView, for: section)
     }
 
-    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         sections[section].footer?
             .view(from: tableView, for: section)
     }
 
-    public func tableView(_: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if let footer = sections[section].footer, footer.isDisplayable {
             return UITableView.automaticDimension
         } else {
@@ -122,7 +122,7 @@ extension TableDisplay: UITableViewDelegate {
 }
 
 extension TableDisplay: TableDisplaying {
-    public func set(sections: [TableSectionItem]) {
+    func set(sections: [TableSectionItem]) {
         self.sections = sections
     }
 }

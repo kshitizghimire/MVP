@@ -1,6 +1,6 @@
 import UIKit
 
-public final class LabelHeaderFooter: UITableViewHeaderFooterView {
+final class LabelHeaderFooter: UITableViewHeaderFooterView {
     private let labelView = LabelView(frame: .zero)
 
     override init(

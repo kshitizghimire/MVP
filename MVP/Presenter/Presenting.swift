@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol Presenting {
+protocol Presenting {
     func viewDidLoad()
     func viewWillAppear()
     func viewDidAppear()
@@ -8,7 +8,7 @@ public protocol Presenting {
     func viewDidDisappear()
 }
 
-public extension Presenting {
+extension Presenting {
     func viewDidLoad() {}
     func viewWillAppear() {}
     func viewDidAppear() {}

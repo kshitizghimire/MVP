@@ -1,7 +1,7 @@
 import UIKit
 
-public struct NavigationItem {
-    public enum ItemType {
+struct NavigationItem {
+    enum ItemType {
         case text(title: String)
         case icon(image: UIImage)
     }
@@ -9,7 +9,7 @@ public struct NavigationItem {
     let type: ItemType
     let action: (() -> Void)?
 
-    public init(
+    init(
         type: ItemType,
         action: (() -> Void)? = nil
     ) {
