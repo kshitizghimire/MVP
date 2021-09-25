@@ -1,6 +1,7 @@
 import Foundation
 
-final class MainThreadNetwork: Networking {
+/// A decorator for Networking which dispatches completion closure on main thread.
+struct MainThreadNetwork: Networking {
     let decoratee: Networking
 
     init(
@@ -10,14 +11,14 @@ final class MainThreadNetwork: Networking {
     }
 
     func perform(request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void) {
-        decoratee.perform(request: request) { [weak self] result in
-            self?.guranteeMainThread {
+        decoratee.perform(request: request) { result in
+            self.performOnMainThread {
                 completion(result)
             }
         }
     }
 
-    private func guranteeMainThread(_ work: @escaping () -> Void) {
+    private func performOnMainThread(_ work: @escaping () -> Void) {
         if Thread.isMainThread {
             work()
         } else {

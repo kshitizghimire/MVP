@@ -178,6 +178,7 @@
 				76DDC29626FF2DF8009FE5C7 /* Networking.swift */,
 				76DDC29826FF2E24009FE5C7 /* RemoteNetwork.swift */,
 				76DDC29A26FF3010009FE5C7 /* MainThreadNetwork.swift */,
+				76DDC2A526FF4C39009FE5C7 /* Loader */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -185,11 +186,18 @@
 		76DDC2A226FF41B1009FE5C7 /* Coins */ = {
 			isa = PBXGroup;
 			children = (
-				76DDC29E26FF33FE009FE5C7 /* Loader.swift */,
 				76DDC2A026FF3504009FE5C7 /* CoinsPresenter.swift */,
 				76DDC2A326FF41CE009FE5C7 /* Coin.swift */,
 			);
 			path = Coins;
+			sourceTree = "<group>";
+		};
+		76DDC2A526FF4C39009FE5C7 /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+				76DDC29E26FF33FE009FE5C7 /* Loader.swift */,
+			);
+			path = Loader;
 			sourceTree = "<group>";
 		};
 		76ED8D6326D8D8B2002FD6EF = {
