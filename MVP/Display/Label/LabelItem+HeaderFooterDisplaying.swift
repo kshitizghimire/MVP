@@ -8,7 +8,7 @@ extension LabelItem: HeaderFooterDisplaying {
         )
         let view =
             tableView.dequeueReusableHeaderFooterView(withIdentifier: LabelHeaderFooter.identifier)
-                as! LabelHeaderFooter
+                as! LabelHeaderFooter // swiftlint:disable:this force_cast
         view.configure(with: self)
 
         return view

@@ -23,7 +23,7 @@ protocol HeaderFooterDisplaying {
 
 extension HeaderFooterDisplaying {
     var isDisplayable: Bool {
-        return true
+        true
     }
 }
 
@@ -34,6 +34,6 @@ protocol CellDisplaying {
 
 extension CellDisplaying {
     var action: (() -> Void)? {
-        return nil
+        nil
     }
 }

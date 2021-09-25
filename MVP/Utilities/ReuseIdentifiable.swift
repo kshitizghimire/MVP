@@ -6,7 +6,7 @@ protocol ReuseIdentifiable {
 
 extension ReuseIdentifiable {
     static var identifier: String {
-        return String(describing: self)
+        String(describing: self)
     }
 }
 

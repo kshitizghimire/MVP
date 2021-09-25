@@ -7,15 +7,11 @@ protocol NavigationItemDisplaying {
 
 extension NavigationItemDisplaying where Self: UIViewController {
     func leftBarButtonItems(_ items: [NavigationItem]) {
-        navigationItem.leftBarButtonItems = items.map {
-            $0.barButtonItem
-        }
+        navigationItem.leftBarButtonItems = items.map(\.barButtonItem)
     }
 
     func rightBarButtonItems(_ items: [NavigationItem]) {
-        navigationItem.rightBarButtonItems = items.map {
-            $0.barButtonItem
-        }
+        navigationItem.rightBarButtonItems = items.map(\.barButtonItem)
     }
 }
 

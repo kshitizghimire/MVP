@@ -37,8 +37,8 @@ final class DemoScreenPresenter: Presenting {
                     print("Left button tapped")
                     let count = Int.random(in: 0 ... 20)
                     let items = (0 ..< count)
-                        .map { i in
-                            LabelItem(title: "Row\(i)") { print("Row \(i)") }
+                        .map { item in
+                            LabelItem(title: "Row\(item)") { print("Row \(item)") }
                         }
                     self?.display
                         .set(sections: [
