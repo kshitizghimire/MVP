@@ -1,7 +1,7 @@
 import UIKit
 
 final class LabelHeaderFooter: UITableViewHeaderFooterView {
-    private let labelView: LabelView = LabelView(frame: .zero)
+    private let labelView = LabelView(frame: .zero)
 
     override init(
         reuseIdentifier: String?
@@ -12,8 +12,9 @@ final class LabelHeaderFooter: UITableViewHeaderFooterView {
         NSLayoutConstraint.activate(contentView.constraintsForAnchoringTo(boundsOf: labelView))
     }
 
+    @available(*, unavailable)
     required init?(
-        coder: NSCoder
+        coder _: NSCoder
     ) {
         fatalError("init(coder:) has not been implemented")
     }

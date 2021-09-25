@@ -6,7 +6,6 @@ protocol Presenting {
     func viewDidAppear()
     func viewWillDisappear()
     func viewDidDisappear()
-
 }
 
 extension Presenting {

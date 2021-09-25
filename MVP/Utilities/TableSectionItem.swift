@@ -14,7 +14,6 @@ struct TableSectionItem {
         self.items = items
         self.footer = footer
     }
-
 }
 
 protocol HeaderFooterDisplaying {

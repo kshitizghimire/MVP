@@ -12,6 +12,7 @@ final class TableDisplay: UIViewController {
             tableView.reloadData()
         }
     }
+
     private let tableView: UITableView
     private let containerView = UIView(frame: .zero)
 
@@ -25,8 +26,9 @@ final class TableDisplay: UIViewController {
         self.tableView.delegate = self
     }
 
+    @available(*, unavailable)
     required init?(
-        coder: NSCoder
+        coder _: NSCoder
     ) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -72,11 +74,11 @@ final class TableDisplay: UIViewController {
 }
 
 extension TableDisplay: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in _: UITableView) -> Int {
         sections.count
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         sections[section].items.count
     }
 
@@ -87,16 +89,15 @@ extension TableDisplay: UITableViewDataSource {
 }
 
 extension TableDisplay: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         sections[indexPath.section].items[indexPath.row]
             .action?()
     }
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if let header = sections[section].header, header.isDisplayable {
             return UITableView.automaticDimension
-        }
-        else {
+        } else {
             return CGFloat.leastNormalMagnitude
         }
     }
@@ -104,7 +105,6 @@ extension TableDisplay: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         sections[section].header?
             .view(from: tableView, for: section)
-
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -112,11 +112,10 @@ extension TableDisplay: UITableViewDelegate {
             .view(from: tableView, for: section)
     }
 
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if let footer = sections[section].footer, footer.isDisplayable {
             return UITableView.automaticDimension
-        }
-        else {
+        } else {
             return CGFloat.leastNormalMagnitude
         }
     }

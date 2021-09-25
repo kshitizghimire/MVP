@@ -5,7 +5,7 @@ extension LabelItem: CellDisplaying {
         tableView.register(LabelCell.self, forCellReuseIdentifier: LabelCell.identifier)
         let cell: LabelCell =
             tableView.dequeueReusableCell(withIdentifier: LabelCell.identifier, for: indexPath)
-            as! LabelCell
+                as! LabelCell
         cell.configure(with: self)
 
         return cell

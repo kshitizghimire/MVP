@@ -13,7 +13,7 @@ final class DemoScreenPresenter: Presenting {
         display.set(title: "Hello")
 
         let items: [CellDisplaying] = {
-            return [
+            [
                 LabelItem(title: "Row1") { print("Row 1") },
                 LabelItem(title: "Row2"),
                 LabelItem(title: "Row3"),
@@ -27,7 +27,7 @@ final class DemoScreenPresenter: Presenting {
                     header: LabelItem(title: "Header"),
                     items: items,
                     footer: LabelItem(title: "Footer")
-                )
+                ),
             ]
         )
 
@@ -35,8 +35,8 @@ final class DemoScreenPresenter: Presenting {
             [
                 NavigationItem(type: .text(title: "Left")) { [weak self] in
                     print("Left button tapped")
-                    let count = Int.random(in: 0...20)
-                    let items = (0..<count)
+                    let count = Int.random(in: 0 ... 20)
+                    let items = (0 ..< count)
                         .map { i in
                             LabelItem(title: "Row\(i)") { print("Row \(i)") }
                         }
@@ -46,10 +46,10 @@ final class DemoScreenPresenter: Presenting {
                                 header: LabelItem(title: "Header"),
                                 items: items,
                                 footer: LabelItem(title: "Footer")
-                            )
+                            ),
                         ]
                         )
-                }
+                },
             ]
         )
 
@@ -57,7 +57,7 @@ final class DemoScreenPresenter: Presenting {
             [
                 NavigationItem(type: .icon(image: UIImage(systemName: "car")!)) {
                     print("Right button tapped")
-                }
+                },
             ]
         )
     }

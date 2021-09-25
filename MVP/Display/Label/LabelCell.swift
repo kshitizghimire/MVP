@@ -11,11 +11,11 @@ final class LabelCell: UITableViewCell {
 
         contentView.addSubview(labelView)
         NSLayoutConstraint.activate(contentView.constraintsForAnchoringTo(boundsOf: labelView))
-
     }
 
+    @available(*, unavailable)
     required init?(
-        coder: NSCoder
+        coder _: NSCoder
     ) {
         fatalError("init(coder:) has not been implemented")
     }

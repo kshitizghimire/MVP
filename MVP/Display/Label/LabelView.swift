@@ -1,19 +1,20 @@
 import UIKit
 
 final class LabelView: UIView {
-    private var label: UILabel = UILabel(frame: .zero)
+    private var label = UILabel(frame: .zero)
 
     override init(
         frame: CGRect
     ) {
         super.init(frame: frame)
 
-        self.addSubview(label)
-        NSLayoutConstraint.activate(self.constraintsForAnchoringTo(boundsOf: label))
+        addSubview(label)
+        NSLayoutConstraint.activate(constraintsForAnchoringTo(boundsOf: label))
     }
 
+    @available(*, unavailable)
     required init?(
-        coder: NSCoder
+        coder _: NSCoder
     ) {
         fatalError("init(coder:) has not been implemented")
     }

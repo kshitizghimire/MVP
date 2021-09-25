@@ -5,6 +5,7 @@ struct NavigationItem {
         case text(title: String)
         case icon(image: UIImage)
     }
+
     let type: ItemType
     let action: (() -> Void)?
 
