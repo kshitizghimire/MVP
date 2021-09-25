@@ -1,4 +1,4 @@
 disabled_rules:
 - trailing_comma
-
+line_length: 200
 reporter: "xcode"

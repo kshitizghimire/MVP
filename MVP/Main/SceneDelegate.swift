@@ -12,7 +12,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         let display = TableDisplay()
 
-        let presenter = DemoScreenPresenter(display: display)
+        let network = RemoteNetwork()
+        let mainQueueDispatcher = RemoteNetworkMainQueueDispatchDecorator(decoratee: network)
+        let coinLoader = CoinLoader(
+            network: mainQueueDispatcher,
+            request: AppConfiguration.coinRequest,
+            decoder: JSONDecoder()
+        )
+        let presenter = CoinsPresenter(display: display, coinLoader: coinLoader)
         display.presenter = presenter
 
         let navigationController = UINavigationController(rootViewController: display)
