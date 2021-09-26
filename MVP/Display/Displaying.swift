@@ -1,3 +1,3 @@
 import Foundation
 
-protocol Displaying: TitleDisplaying, NavigationBarButtonDisplaying {}
+protocol Displaying: AnyObject, TitleDisplaying, NavigationBarButtonDisplaying {}

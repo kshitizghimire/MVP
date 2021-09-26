@@ -1,20 +1,23 @@
 import UIKit
 
 final class CoinsPresenter: Presenting {
-    private weak var display: TableDisplay!
+    private weak var display: TableDisplaying!
+    private let title: String
     private let modelLoader: ModelLoading
     private let imageLoader: ImageLoading
     private let apiUrl: URL
     private let cellPlaceholderImage: UIImage
 
     init(
-        display: TableDisplay,
+        display: TableDisplaying,
+        title: String,
         modelLoader: ModelLoading,
         imageLoader: ImageLoading,
         apiUrl: URL,
         cellPlaceholderImage: UIImage
     ) {
         self.display = display
+        self.title = title
         self.modelLoader = modelLoader
         self.imageLoader = imageLoader
         self.apiUrl = apiUrl
@@ -22,7 +25,7 @@ final class CoinsPresenter: Presenting {
     }
 
     func viewDidLoad() {
-        display.set(title: "Coins")
+        display.set(title: title)
 
         modelLoader.load(
             for: [Coin].self,

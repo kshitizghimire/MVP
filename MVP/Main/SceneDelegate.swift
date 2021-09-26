@@ -26,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let presenter = CoinsPresenter(
             display: display,
+            title: "Coins",
             modelLoader: coinLoader,
             imageLoader: cachedImageLoader,
             apiUrl: AppConfiguration.coinsApiUrl,

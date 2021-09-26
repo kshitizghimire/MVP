@@ -22,6 +22,10 @@ final class TableDisplay: UIViewController {
         self.tableView = tableView
         super.init(nibName: nil, bundle: nil)
 
+        tableView.estimatedRowHeight = 60
+        tableView.estimatedSectionFooterHeight = 10
+        tableView.estimatedSectionFooterHeight = 10
+
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
