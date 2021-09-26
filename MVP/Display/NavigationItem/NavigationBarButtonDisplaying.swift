@@ -55,9 +55,9 @@ extension NavigationBarButton {
 
         let item: NavigationBarButtonItem
         switch type {
-        case let .icon(image):
+        case .icon(let image):
             item = NavigationBarButtonItem(image: image, action: action)
-        case let .text(title):
+        case .text(let title):
             item = NavigationBarButtonItem(title: title, action: action)
         }
 

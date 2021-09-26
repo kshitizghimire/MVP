@@ -20,10 +20,10 @@ final class CachedImageLoader: ImageLoading {
             decoratee.load(for: url) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
-                case let .success(image):
+                case .success(let image):
                     self.cache.setObject(image, for: url as NSURL)
                     completionHandler(.success(image))
-                case let .failure(error):
+                case .failure(let error):
                     completionHandler(.failure(error))
                 }
             }

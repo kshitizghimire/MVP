@@ -15,13 +15,13 @@ final class RemoteImageLoader: ImageLoading {
     func load(for url: URL, completionHandler: @escaping (Result<UIImage, Error>) -> Void) {
         network.perform(with: url) { result in
             switch result {
-            case let .success(data):
+            case .success(let data):
                 guard let image = UIImage(data: data) else {
                     completionHandler(.failure(ImageLoaderError.general))
                     return
                 }
                 completionHandler(.success(image))
-            case let .failure(error):
+            case .failure(let error):
                 completionHandler(.failure(error))
             }
         }

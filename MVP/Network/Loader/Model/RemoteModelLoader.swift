@@ -12,14 +12,14 @@ final class RemoteModelLoader: ModelLoading {
     func load<T: Decodable>(for _: T.Type, with url: URL, completionHandler: @escaping (Result<T, Error>) -> Void) {
         network.perform(with: url) { [unowned self] result in
             switch result {
-            case let .success(data):
+            case .success(let data):
                 do {
                     let result = try self.decoder.decode(T.self, from: data)
                     completionHandler(.success(result))
                 } catch {
                     completionHandler(.failure(error))
                 }
-            case let .failure(error):
+            case .failure(let error):
                 completionHandler(.failure(error))
             }
         }

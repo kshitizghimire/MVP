@@ -21,7 +21,7 @@
 --funcattributes preserve
 --groupedextension "MARK: %c"
 --guardelse auto
---header ignore
+--header strip
 --hexgrouping none
 --hexliteralcase uppercase
 --ifdef indent
@@ -40,7 +40,7 @@
 --octalgrouping none
 --operatorfunc spaced
 --organizetypes actor,class,enum,struct
---patternlet hoist
+--patternlet inline
 --ranges spaced
 --redundanttype inferred
 --self remove
@@ -57,10 +57,11 @@
 --typemark "MARK: - %t"
 --varattributes preserve
 --voidtype void
---wraparguments preserve
+--wraparguments before-first
 --wrapcollections before-first
 --wrapconditions preserve
 --wrapparameters before-first
 --wrapreturntype preserve
 --xcodeindentation disabled
 --yodaswap always
+--enable isEmpty

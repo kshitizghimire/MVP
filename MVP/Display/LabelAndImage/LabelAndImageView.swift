@@ -26,7 +26,7 @@ final class LabelAndImageView: UIView {
         item.imageLoader.load(for: url) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case let .success(image):
+            case .success(let image):
                 self.icon.image = image
             case .failure:
                 break
