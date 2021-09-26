@@ -1,6 +1,6 @@
 import Foundation
 
-struct RemoteNetwork: Networking {
+final class RemoteNetwork: Networking {
     init(
         session: URLSession = URLSession.shared
     ) {

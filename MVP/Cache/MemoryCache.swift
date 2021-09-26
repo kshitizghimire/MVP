@@ -1,7 +1,7 @@
 import Foundation
 
-struct MemoryCache: Caching {
-    func object(for key: AnyObject) -> Any? {
+final class MemoryCache: Caching {
+    func object(for key: AnyObject) -> AnyObject? {
         cache.object(forKey: key)
     }
 

@@ -14,11 +14,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let network = RemoteNetwork()
         let mainThreadNetwork = MainThreadNetwork(network)
+
         let coinLoader = Loader(
             network: mainThreadNetwork,
             decoder: JSONDecoder()
         )
-        let presenter = CoinsPresenter(display: display, coinLoader: coinLoader, apiUrl: AppConfiguration.coinsApiUrl)
+
+        let imageLoader = ImageLoader(cache: MemoryCache(), network: mainThreadNetwork)
+
+        let presenter = CoinsPresenter(
+            display: display,
+            coinLoader: coinLoader,
+            imageLoader: imageLoader,
+            apiUrl: AppConfiguration.coinsApiUrl,
+            cellPlaceholderImage: UIImage(systemName: "car")!
+        )
         display.presenter = presenter
 
         let navigationController = UINavigationController(rootViewController: display)

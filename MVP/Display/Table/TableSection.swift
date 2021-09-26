@@ -7,11 +7,11 @@ struct TableSection {
 
     init(
         header: HeaderFooterDisplaying? = nil,
-        items: [CellDisplaying] = [],
+        cells: [CellDisplaying] = [],
         footer: HeaderFooterDisplaying? = nil
     ) {
         self.header = header
-        cells = items
+        self.cells = cells
         self.footer = footer
     }
 }

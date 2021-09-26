@@ -1,7 +1,7 @@
 import Foundation
 
 /// A decorator for Networking which dispatches completion closure on main thread.
-struct MainThreadNetwork: Networking {
+final class MainThreadNetwork: Networking {
     let decoratee: Networking
 
     init(
@@ -11,7 +11,7 @@ struct MainThreadNetwork: Networking {
     }
 
     func perform(with url: URL, completionHandler: @escaping (Result<Data, Error>) -> Void) {
-        decoratee.perform(with: url) { result in
+        decoratee.perform(with: url) { [unowned self] result in
             self.performOnMainThread {
                 completionHandler(result)
             }

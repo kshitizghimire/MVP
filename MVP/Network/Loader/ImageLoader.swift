@@ -11,9 +11,14 @@ protocol ImageLoading {
     func load(for url: URL, completionHandler: @escaping (Result<UIImage, Error>) -> Void)
 }
 
-struct ImageLoader: ImageLoading {
+final class ImageLoader: ImageLoading {
     enum ImageLoaderError: Error {
         case general
+    }
+
+    init(cache: Caching, network: Networking) {
+        self.cache = cache
+        self.network = network
     }
 
     let cache: Caching

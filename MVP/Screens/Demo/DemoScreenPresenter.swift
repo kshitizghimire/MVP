@@ -12,7 +12,7 @@ final class DemoScreenPresenter: Presenting {
     func viewDidLoad() {
         display.set(title: "Hello")
 
-        let items: [CellDisplaying] = {
+        let cells: [CellDisplaying] = {
             [
                 Label(text: "Row1") { print("Row 1") },
                 Label(text: "Row2"),
@@ -25,7 +25,7 @@ final class DemoScreenPresenter: Presenting {
             sections: [
                 TableSection(
                     header: Label(text: "Header"),
-                    items: items,
+                    cells: cells,
                     footer: Label(text: "Footer")
                 ),
             ]
@@ -36,7 +36,7 @@ final class DemoScreenPresenter: Presenting {
                 NavigationBarButton(type: .text(title: "Left")) { [weak self] in
                     print("Left button tapped")
                     let count = Int.random(in: 0 ... 20)
-                    let items = (0 ..< count)
+                    let cells = (0 ..< count)
                         .map { item in
                             Label(text: "Row\(item)") { print("Row \(item)") }
                         }
@@ -44,7 +44,7 @@ final class DemoScreenPresenter: Presenting {
                         .set(sections: [
                             TableSection(
                                 header: Label(text: "Header"),
-                                items: items,
+                                cells: cells,
                                 footer: Label(text: "Footer")
                             ),
                         ]
