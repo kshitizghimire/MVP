@@ -1,5 +1,5 @@
 import Foundation
 
 protocol Networking {
-    func perform(completion: @escaping (Result<Data, Error>) -> Void)
+    func perform(with url: URL, completionHandler: @escaping (Result<Data, Error>) -> Void)
 }

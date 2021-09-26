@@ -10,10 +10,10 @@ struct MainThreadNetwork: Networking {
         self.decoratee = decoratee
     }
 
-    func perform(completion: @escaping (Result<Data, Error>) -> Void) {
-        decoratee.perform { result in
+    func perform(with url: URL, completionHandler: @escaping (Result<Data, Error>) -> Void) {
+        decoratee.perform(with: url) { result in
             self.performOnMainThread {
-                completion(result)
+                completionHandler(result)
             }
         }
     }

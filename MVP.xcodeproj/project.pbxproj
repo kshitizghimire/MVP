@@ -25,6 +25,9 @@
 		76DDC29F26FF33FE009FE5C7 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDC29E26FF33FE009FE5C7 /* Loader.swift */; };
 		76DDC2A126FF3504009FE5C7 /* CoinsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDC2A026FF3504009FE5C7 /* CoinsPresenter.swift */; };
 		76DDC2A426FF41CE009FE5C7 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDC2A326FF41CE009FE5C7 /* Coin.swift */; };
+		76DDC2A826FFF86E009FE5C7 /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDC2A726FFF86E009FE5C7 /* Caching.swift */; };
+		76DDC2AA26FFF8F0009FE5C7 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDC2A926FFF8F0009FE5C7 /* MemoryCache.swift */; };
+		76DDC2AC26FFFC79009FE5C7 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDC2AB26FFFC79009FE5C7 /* ImageLoader.swift */; };
 		76ED8D7026D8D8B2002FD6EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ED8D6F26D8D8B2002FD6EF /* AppDelegate.swift */; };
 		76ED8D7226D8D8B2002FD6EF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ED8D7126D8D8B2002FD6EF /* SceneDelegate.swift */; };
 		76ED8D7926D8D8B4002FD6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76ED8D7826D8D8B4002FD6EF /* Assets.xcassets */; };
@@ -54,6 +57,9 @@
 		76DDC29E26FF33FE009FE5C7 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		76DDC2A026FF3504009FE5C7 /* CoinsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsPresenter.swift; sourceTree = "<group>"; };
 		76DDC2A326FF41CE009FE5C7 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		76DDC2A726FFF86E009FE5C7 /* Caching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caching.swift; sourceTree = "<group>"; };
+		76DDC2A926FFF8F0009FE5C7 /* MemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCache.swift; sourceTree = "<group>"; };
+		76DDC2AB26FFFC79009FE5C7 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		76ED8D6C26D8D8B2002FD6EF /* MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76ED8D6F26D8D8B2002FD6EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76ED8D7126D8D8B2002FD6EF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,8 +202,18 @@
 			isa = PBXGroup;
 			children = (
 				76DDC29E26FF33FE009FE5C7 /* Loader.swift */,
+				76DDC2AB26FFFC79009FE5C7 /* ImageLoader.swift */,
 			);
 			path = Loader;
+			sourceTree = "<group>";
+		};
+		76DDC2A626FFF7E1009FE5C7 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				76DDC2A726FFF86E009FE5C7 /* Caching.swift */,
+				76DDC2A926FFF8F0009FE5C7 /* MemoryCache.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 		76ED8D6326D8D8B2002FD6EF = {
@@ -219,6 +235,7 @@
 		76ED8D6E26D8D8B2002FD6EF /* MVP */ = {
 			isa = PBXGroup;
 			children = (
+				76DDC2A626FFF7E1009FE5C7 /* Cache */,
 				76DDC29526FF2D27009FE5C7 /* Network */,
 				7642B8BF26FDFB8800489E81 /* Screens */,
 				7642B8AC26FDC6F300489E81 /* Main */,
@@ -340,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76DDC2AA26FFF8F0009FE5C7 /* MemoryCache.swift in Sources */,
 				76DDC29D26FF325A009FE5C7 /* AppConfigurations.swift in Sources */,
 				76DDC29B26FF3010009FE5C7 /* MainThreadNetwork.swift in Sources */,
 				76DDC29726FF2DF8009FE5C7 /* Networking.swift in Sources */,
@@ -353,6 +371,7 @@
 				76DDC29926FF2E24009FE5C7 /* RemoteNetwork.swift in Sources */,
 				76DDC2A126FF3504009FE5C7 /* CoinsPresenter.swift in Sources */,
 				76DDC29F26FF33FE009FE5C7 /* Loader.swift in Sources */,
+				76DDC2AC26FFFC79009FE5C7 /* ImageLoader.swift in Sources */,
 				76DDC2A426FF41CE009FE5C7 /* Coin.swift in Sources */,
 				7642B8BA26FDF70400489E81 /* Label+HeaderFooterDisplaying.swift in Sources */,
 				BCA5436A26FDE01200975AFE /* NavigationBarButton.swift in Sources */,
@@ -363,6 +382,7 @@
 				7642B8AF26FDF54100489E81 /* Displaying.swift in Sources */,
 				7642B8AB26FDC10800489E81 /* UIView+Constraints.swift in Sources */,
 				7642B8A726FDB8A500489E81 /* TitleDisplaying.swift in Sources */,
+				76DDC2A826FFF86E009FE5C7 /* Caching.swift in Sources */,
 				7642B8B426FDF65500489E81 /* LabelCell.swift in Sources */,
 				76ED8D7226D8D8B2002FD6EF /* SceneDelegate.swift in Sources */,
 			);

@@ -1,7 +1,7 @@
 import Foundation
 
 struct AppConfiguration {
-    static var coinRequest: URLRequest {
+    static var coinsApiUrl: URL {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "api.coingecko.com"
@@ -14,6 +14,6 @@ struct AppConfiguration {
             URLQueryItem(name: "sparkline", value: "false"),
         ]
 
-        return URLRequest(url: urlComponents.url!)
+        return urlComponents.url!
     }
 }
