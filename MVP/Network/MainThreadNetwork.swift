@@ -2,10 +2,10 @@ import Foundation
 
 /// A decorator for Networking which dispatches completion closure on main thread.
 final class MainThreadNetwork: Networking {
-    let decoratee: Networking
+    private let decoratee: Networking
 
     init(
-        _ decoratee: Networking
+        network decoratee: Networking
     ) {
         self.decoratee = decoratee
     }

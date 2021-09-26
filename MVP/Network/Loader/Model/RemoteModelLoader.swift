@@ -1,10 +1,6 @@
 import Foundation
 
-protocol Loading {
-    func load<T: Decodable>(for type: T.Type, with url: URL, completionHandler: @escaping (Result<T, Error>) -> Void)
-}
-
-final class Loader: Loading {
+final class RemoteModelLoader: ModelLoading {
     let network: Networking
     let decoder: JSONDecoder
 

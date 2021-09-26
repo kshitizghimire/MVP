@@ -10,22 +10,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
+
         let display = TableDisplay()
 
         let network = RemoteNetwork()
-        let mainThreadNetwork = MainThreadNetwork(network)
+        let mainThreadNetwork = MainThreadNetwork(network: network)
 
-        let coinLoader = Loader(
+        let coinLoader = RemoteModelLoader(
             network: mainThreadNetwork,
             decoder: JSONDecoder()
         )
 
-        let imageLoader = ImageLoader(cache: MemoryCache(), network: mainThreadNetwork)
+        let imageLoader = RemoteImageLoader(network: mainThreadNetwork)
+        let cachedImageLoader = CachedImageLoader(imageLoader: imageLoader, cache: MemoryCache())
 
         let presenter = CoinsPresenter(
             display: display,
-            coinLoader: coinLoader,
-            imageLoader: imageLoader,
+            modelLoader: coinLoader,
+            imageLoader: cachedImageLoader,
             apiUrl: AppConfiguration.coinsApiUrl,
             cellPlaceholderImage: UIImage(systemName: "car")!
         )

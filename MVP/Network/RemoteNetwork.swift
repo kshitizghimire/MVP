@@ -1,13 +1,13 @@
 import Foundation
 
 final class RemoteNetwork: Networking {
+    private let session: URLSession
+
     init(
         session: URLSession = URLSession.shared
     ) {
         self.session = session
     }
-
-    private let session: URLSession
 
     func perform(with url: URL, completionHandler: @escaping (Result<Data, Error>) -> Void) {
         session.dataTask(with: url) { data, _, error in
