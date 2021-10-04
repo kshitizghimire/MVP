@@ -1,13 +1,13 @@
 import Foundation
 
 final class MemoryCache: Caching {
-    func object(for key: AnyObject) -> AnyObject? {
-        cache.object(forKey: key)
+    private var cache = Cache<AnyHashable, Any>()
+
+    func value(for key: AnyHashable) -> Any? {
+        cache[key]
     }
 
-    func setObject(_ object: AnyObject, for key: AnyObject) {
-        cache.setObject(object, forKey: key)
+    func setValue(_ value: Any, for key: AnyHashable) {
+        cache[key] = value
     }
-
-    private let cache: NSCache<AnyObject, AnyObject> = NSCache()
 }

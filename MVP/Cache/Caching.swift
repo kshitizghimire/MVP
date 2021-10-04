@@ -1,6 +1,6 @@
 import Foundation
 
-protocol Caching: AnyObject {
-    func object(for key: AnyObject) -> AnyObject?
-    func setObject(_ object: AnyObject, for key: AnyObject)
+protocol Caching {
+    func value(for key: AnyHashable) -> Any?
+    func setValue(_ value: Any, for key: AnyHashable)
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-final class Cache<Key: Hashable, Value> {
+struct Cache<Key: Hashable, Value> {
     private let wrapped = NSCache<WrappedKey, WrappedValue>()
 
     func insert(_ value: Value, forKey key: Key) {
