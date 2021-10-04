@@ -6,6 +6,7 @@ final class CoinsPresenterTests: XCTestCase {
     var mockModelLoader: MockModelLoader<[Coin]>!
     var mockDisplay: MockTableDisplay!
     var presenter: CoinsPresenter!
+
     override func setUpWithError() throws {
         mockModelLoader = MockModelLoader<[Coin]>()
         mockDisplay = MockTableDisplay()
