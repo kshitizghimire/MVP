@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7638E4E6270B123B0098F023 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7638E4E5270B123B0098F023 /* Cache.swift */; };
+		7638E4EA270B1EF50098F023 /* MemoryCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7638E4E7270B1EE10098F023 /* MemoryCacheTests.swift */; };
+		7638E4EC270B20FE0098F023 /* CacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7638E4EB270B20FE0098F023 /* CacheTests.swift */; };
 		7642B8A726FDB8A500489E81 /* TitleDisplaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7642B8A626FDB8A500489E81 /* TitleDisplaying.swift */; };
 		7642B8AB26FDC10800489E81 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7642B8AA26FDC10800489E81 /* UIView+Constraints.swift */; };
 		7642B8AF26FDF54100489E81 /* Displaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7642B8AE26FDF54100489E81 /* Displaying.swift */; };
@@ -61,6 +64,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7638E4E5270B123B0098F023 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		7638E4E7270B1EE10098F023 /* MemoryCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCacheTests.swift; sourceTree = "<group>"; };
+		7638E4EB270B20FE0098F023 /* CacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTests.swift; sourceTree = "<group>"; };
 		7642B8A626FDB8A500489E81 /* TitleDisplaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDisplaying.swift; sourceTree = "<group>"; };
 		7642B8AA26FDC10800489E81 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		7642B8AE26FDF54100489E81 /* Displaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displaying.swift; sourceTree = "<group>"; };
@@ -226,9 +232,11 @@
 			isa = PBXGroup;
 			children = (
 				76C7770F2701A26C003E02B6 /* MockTableDisplay.swift */,
-				76C7770227009D75003E02B6 /* CoinsPresenterTests.swift */,
 				76C7770B27009F1E003E02B6 /* MockModelLoader.swift */,
 				76C7770D2700A91C003E02B6 /* MockImageLoader.swift */,
+				76C7770227009D75003E02B6 /* CoinsPresenterTests.swift */,
+				7638E4E7270B1EE10098F023 /* MemoryCacheTests.swift */,
+				7638E4EB270B20FE0098F023 /* CacheTests.swift */,
 			);
 			path = MVPTests;
 			sourceTree = "<group>";
@@ -265,6 +273,7 @@
 		76DDC2A626FFF7E1009FE5C7 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				7638E4E5270B123B0098F023 /* Cache.swift */,
 				76DDC2A726FFF86E009FE5C7 /* Caching.swift */,
 				76DDC2A926FFF8F0009FE5C7 /* MemoryCache.swift */,
 			);
@@ -465,7 +474,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"/opt/homebrew/bin:$PATH\"\nif which swiftformat >/dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+			shellScript = "export PATH=\"/opt/homebrew/bin:$PATH\"\nif which swiftformat >/dev/null; then\n    swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -476,6 +485,8 @@
 			files = (
 				76C7770C27009F1E003E02B6 /* MockModelLoader.swift in Sources */,
 				76C777102701A26C003E02B6 /* MockTableDisplay.swift in Sources */,
+				7638E4EC270B20FE0098F023 /* CacheTests.swift in Sources */,
+				7638E4EA270B1EF50098F023 /* MemoryCacheTests.swift in Sources */,
 				76C7770E2700A91C003E02B6 /* MockImageLoader.swift in Sources */,
 				76C7770327009D75003E02B6 /* CoinsPresenterTests.swift in Sources */,
 			);
@@ -490,6 +501,7 @@
 				76DDC29D26FF325A009FE5C7 /* AppConfigurations.swift in Sources */,
 				76DDC29B26FF3010009FE5C7 /* MainThreadNetwork.swift in Sources */,
 				76DDC29726FF2DF8009FE5C7 /* Networking.swift in Sources */,
+				7638E4E6270B123B0098F023 /* Cache.swift in Sources */,
 				BCA5436326FDB1B800975AFE /* DemoScreenPresenter.swift in Sources */,
 				76A77C4C26DA3B79007AD999 /* TableDisplay.swift in Sources */,
 				76ED8D7026D8D8B2002FD6EF /* AppDelegate.swift in Sources */,
@@ -543,7 +555,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -567,7 +579,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -706,6 +718,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MVP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -724,6 +737,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MVP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

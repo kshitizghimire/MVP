@@ -11,7 +11,8 @@ final class MainThreadNetwork: Networking {
     }
 
     func perform(with url: URL, completionHandler: @escaping (Result<Data, Error>) -> Void) {
-        decoratee.perform(with: url) { [unowned self] result in
+        decoratee.perform(with: url) { [weak self] result in
+            guard let self = self else { return }
             self.performOnMainThread {
                 completionHandler(result)
             }
