@@ -25,6 +25,7 @@
 		76C7770C27009F1E003E02B6 /* MockModelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C7770B27009F1E003E02B6 /* MockModelLoader.swift */; };
 		76C7770E2700A91C003E02B6 /* MockImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C7770D2700A91C003E02B6 /* MockImageLoader.swift */; };
 		76C777102701A26C003E02B6 /* MockTableDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C7770F2701A26C003E02B6 /* MockTableDisplay.swift */; };
+		76D1EFE4270C597300536E72 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D1EFE3270C597300536E72 /* AppNavigator.swift */; };
 		76DDC29726FF2DF8009FE5C7 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDC29626FF2DF8009FE5C7 /* Networking.swift */; };
 		76DDC29926FF2E24009FE5C7 /* RemoteNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDC29826FF2E24009FE5C7 /* RemoteNetwork.swift */; };
 		76DDC29B26FF3010009FE5C7 /* MainThreadNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DDC29A26FF3010009FE5C7 /* MainThreadNetwork.swift */; };
@@ -83,6 +84,7 @@
 		76C7770B27009F1E003E02B6 /* MockModelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModelLoader.swift; sourceTree = "<group>"; };
 		76C7770D2700A91C003E02B6 /* MockImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageLoader.swift; sourceTree = "<group>"; };
 		76C7770F2701A26C003E02B6 /* MockTableDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTableDisplay.swift; sourceTree = "<group>"; };
+		76D1EFE3270C597300536E72 /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		76DDC29626FF2DF8009FE5C7 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		76DDC29826FF2E24009FE5C7 /* RemoteNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNetwork.swift; sourceTree = "<group>"; };
 		76DDC29A26FF3010009FE5C7 /* MainThreadNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThreadNetwork.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				76ED8D6F26D8D8B2002FD6EF /* AppDelegate.swift */,
 				76ED8D7126D8D8B2002FD6EF /* SceneDelegate.swift */,
 				76DDC29C26FF325A009FE5C7 /* AppConfigurations.swift */,
+				76D1EFE3270C597300536E72 /* AppNavigator.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				7642B8BA26FDF70400489E81 /* Label+HeaderFooterDisplaying.swift in Sources */,
 				76DDC2B3270009A3009FE5C7 /* LabelAndImageView.swift in Sources */,
 				BCA5436A26FDE01200975AFE /* NavigationBarButton.swift in Sources */,
+				76D1EFE4270C597300536E72 /* AppNavigator.swift in Sources */,
 				76A77C4E26DA5E21007AD999 /* LabelView.swift in Sources */,
 				76DDC2B1270008B9009FE5C7 /* LabelAndImage.swift in Sources */,
 				BCA5435F26FD9C8200975AFE /* Presenting.swift in Sources */,
