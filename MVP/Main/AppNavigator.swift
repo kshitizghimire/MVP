@@ -1,8 +1,8 @@
 import Foundation
 import UIKit
 
-struct AppNavigator {
-    let navigationController = UINavigationController()
+final class AppNavigator {
+    var navigationController: UINavigationController!
     let network: Networking
     let memoryCache: Caching
     let modelLoader: ModelLoading
@@ -34,10 +34,18 @@ struct AppNavigator {
             modelLoader: modelLoader,
             imageLoader: cachedImageLoader,
             apiUrl: AppConfiguration.coinsApiUrl,
-            cellPlaceholderImage: UIImage(systemName: "car")!
+            cellPlaceholderImage: UIImage(systemName: "car")!,
+            coinSelected: coinDetailAction
         )
         display.presenter = presenter
-        navigationController.pushViewController(display, animated: true)
+        navigationController = UINavigationController(rootViewController: display)
         return navigationController
+    }
+
+    lazy var coinDetailAction: (Coin) -> Void = { [weak self] _ in
+        let display = TableDisplay()
+        let presenter = DemoScreenPresenter(display: display)
+        display.presenter = presenter
+        self?.navigationController.pushViewController(display, animated: true)
     }
 }
