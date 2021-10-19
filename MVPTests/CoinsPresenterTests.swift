@@ -16,7 +16,8 @@ final class CoinsPresenterTests: XCTestCase {
             modelLoader: mockModelLoader,
             imageLoader: MockImageLoader(),
             apiUrl: URL(string: "http://test.com")!,
-            cellPlaceholderImage: UIImage()
+            cellPlaceholderImage: UIImage(),
+            coinSelected: { _ in }
         )
     }
 
