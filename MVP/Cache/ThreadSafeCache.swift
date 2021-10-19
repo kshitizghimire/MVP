@@ -4,6 +4,10 @@ struct ThreadSafeCache: Caching {
     private let decoratee: Caching
     private let lockQueue = DispatchQueue(label: "lock.queue", attributes: .concurrent)
 
+    init(cache decoratee: Caching) {
+        self.decoratee = decoratee
+    }
+
     func value(for key: AnyHashable) -> Any? {
         lockQueue.sync {
             decoratee.value(for: key)
