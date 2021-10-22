@@ -22,7 +22,7 @@ final class AppNavigator {
             decoder: JSONDecoder()
         )
 
-        imageLoader = RemoteImageLoader(network: network)
+        imageLoader = ImageLoader(network: network)
         cachedImageLoader = CachedImageLoader(imageLoader: imageLoader, cache: cache)
     }
 

@@ -1,9 +1,9 @@
 import Foundation
 import UIKit
 
-final class RemoteImageLoader: ImageLoading {
-    enum ImageLoaderError: Error {
-        case general
+final class ImageLoader: ImageLoading {
+    enum ImageDataError: Error {
+        case unSupportedFormat
     }
 
     private let network: Networking
@@ -12,17 +12,17 @@ final class RemoteImageLoader: ImageLoading {
         self.network = network
     }
 
-    func load(for url: URL, completionHandler: @escaping (Result<UIImage, Error>) -> Void) {
+    func load(for url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
         network.perform(with: url) { result in
             switch result {
             case .success(let data):
                 guard let image = UIImage(data: data) else {
-                    completionHandler(.failure(ImageLoaderError.general))
+                    completion(.failure(ImageDataError.unSupportedFormat))
                     return
                 }
-                completionHandler(.success(image))
+                completion(.success(image))
             case .failure(let error):
-                completionHandler(.failure(error))
+                completion(.failure(error))
             }
         }
     }
