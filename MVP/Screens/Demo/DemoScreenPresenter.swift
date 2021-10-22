@@ -31,8 +31,11 @@ final class DemoScreenPresenter: Presenting {
             ]
         )
 
-        display.setLeftBarButtons(
+        display.setRightBarButtons(
             [
+                NavigationBarButton(type: .icon(image: UIImage(systemName: "car")!)) {
+                    print("Right button tapped")
+                },
                 NavigationBarButton(type: .text(title: "Left")) { [weak self] in
                     print("Left button tapped")
                     let count = Int.random(in: 0 ... 20)
@@ -49,14 +52,6 @@ final class DemoScreenPresenter: Presenting {
                             ),
                         ]
                         )
-                },
-            ]
-        )
-
-        display.setRightBarButtons(
-            [
-                NavigationBarButton(type: .icon(image: UIImage(systemName: "car")!)) {
-                    print("Right button tapped")
                 },
             ]
         )

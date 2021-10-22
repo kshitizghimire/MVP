@@ -7,6 +7,7 @@ final class CoinsPresenter: Presenting {
     private let imageLoader: ImageLoading
     private let apiUrl: URL
     private let cellPlaceholderImage: UIImage
+    private let coinSelected: (Coin) -> Void
 
     init(
         display: TableDisplaying,
@@ -14,7 +15,8 @@ final class CoinsPresenter: Presenting {
         modelLoader: ModelLoading,
         imageLoader: ImageLoading,
         apiUrl: URL,
-        cellPlaceholderImage: UIImage
+        cellPlaceholderImage: UIImage,
+        coinSelected: @escaping (Coin) -> Void
     ) {
         self.display = display
         self.title = title
@@ -22,6 +24,7 @@ final class CoinsPresenter: Presenting {
         self.imageLoader = imageLoader
         self.apiUrl = apiUrl
         self.cellPlaceholderImage = cellPlaceholderImage
+        self.coinSelected = coinSelected
     }
 
     func viewDidLoad() {
@@ -34,13 +37,15 @@ final class CoinsPresenter: Presenting {
             guard let self = self else { return }
             switch result {
             case .success(let coins):
-                let cells: [CellDisplaying] = coins.map {
+                let cells: [CellDisplaying] = coins.map { coin in
                     LabelAndImage(
-                        text: $0.name,
+                        text: coin.name,
                         placeholderImage: self.cellPlaceholderImage,
-                        imageUrl: $0.image,
+                        imageUrl: coin.image,
                         imageLoader: self.imageLoader
-                    )
+                    ) {
+                        self.coinSelected(coin)
+                    }
                 }
                 self.display.set(
                     sections: [
