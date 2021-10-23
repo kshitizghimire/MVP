@@ -1,22 +1,23 @@
 import Foundation
 
-struct ThreadSafeCache: Caching {
-    private let decoratee: Caching
+struct ThreadSafeCache<T: Caching>: Caching {
+    private var decoratee: T
     private let lockQueue = DispatchQueue(label: "lock.queue", attributes: .concurrent)
 
-    init(cache decoratee: Caching) {
+    init(cache decoratee: T) {
         self.decoratee = decoratee
     }
 
-    func value(for key: AnyHashable) -> Any? {
-        lockQueue.sync {
-            decoratee.value(for: key)
+    subscript(key: T.Key) -> T.Value? {
+        get {
+            lockQueue.sync {
+                decoratee[key]
+            }
         }
-    }
-
-    func setValue(_ value: Any, for key: AnyHashable) {
-        lockQueue.sync(flags: .barrier) {
-            decoratee.setValue(value, for: key)
+        set {
+            lockQueue.sync(flags: .barrier) {
+                decoratee[key] = newValue
+            }
         }
     }
 }

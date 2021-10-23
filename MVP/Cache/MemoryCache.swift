@@ -1,13 +1,14 @@
 import Foundation
 
-final class MemoryCache: Caching {
-    private var cache = Cache<AnyHashable, Any>()
+struct MemoryCache<Key: Hashable, Value>: Caching {
+    private var cache = Cache<Key, Value>()
 
-    func value(for key: AnyHashable) -> Any? {
-        cache[key]
-    }
-
-    func setValue(_ value: Any, for key: AnyHashable) {
-        cache[key] = value
+    subscript(key: Key) -> Value? {
+        get {
+            cache[key]
+        }
+        set {
+            cache[key] = newValue
+        }
     }
 }

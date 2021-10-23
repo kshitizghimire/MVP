@@ -1,6 +1,7 @@
 import Foundation
 
 protocol Caching {
-    func value(for key: AnyHashable) -> Any?
-    func setValue(_ value: Any, for key: AnyHashable)
+    associatedtype Key = AnyHashable
+    associatedtype Value
+    subscript(_: Key) -> Value? { get set }
 }
