@@ -31,8 +31,8 @@ final class CoinsPresenter: Presenting {
         display.set(title: title)
 
         modelLoader.load(
-            for: [Coin].self,
-            with: apiUrl
+            for: apiUrl,
+            with: [Coin].self
         ) { [weak self] result in
             guard let self = self else { return }
             switch result {

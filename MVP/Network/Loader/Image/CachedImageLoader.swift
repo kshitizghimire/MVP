@@ -1,15 +1,15 @@
 import UIKit
 
 /// A decorator for ImageLoading which enables caching
-final class CachedImageLoader<T: Caching>: ImageLoading where T.Key == URL, T.Value == UIImage {
-    private var cache: T
+struct CachedImageLoader<T: Caching>: ImageLoading where T.Key == URL, T.Value == UIImage {
+    private let cache: CacheReferenceType
     private let decoratee: ImageLoading
 
     init(
         imageLoader decoratee: ImageLoading,
         cache: T
     ) {
-        self.cache = cache
+        self.cache = CacheReferenceType(cache: cache)
         self.decoratee = decoratee
     }
 
@@ -17,15 +17,33 @@ final class CachedImageLoader<T: Caching>: ImageLoading where T.Key == URL, T.Va
         if let cacheImage = cache[url] {
             completion(.success(cacheImage))
         } else {
-            decoratee.load(for: url) { [weak self] result in
-                guard let self = self else { return }
+            decoratee.load(for: url) { result in
                 switch result {
                 case .success(let image):
-                    self.cache[url] = image
+                    cache[url] = image
                     completion(.success(image))
                 case .failure(let error):
                     completion(.failure(error))
                 }
+            }
+        }
+    }
+}
+
+private extension CachedImageLoader {
+    final class CacheReferenceType {
+        private var cache: T
+
+        init(cache: T) {
+            self.cache = cache
+        }
+
+        subscript(key: T.Key) -> T.Value? {
+            get {
+                cache[key]
+            }
+            set {
+                cache[key] = newValue
             }
         }
     }

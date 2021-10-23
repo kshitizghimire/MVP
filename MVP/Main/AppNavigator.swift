@@ -3,26 +3,26 @@ import UIKit
 
 final class AppNavigator {
     var navigationController: UINavigationController!
-    let network: Networking
+    let dataLoader: DataLoading
     let cache: ThreadSafeCache<MemoryCache<URL, UIImage>>
     let modelLoader: ModelLoading
     let imageLoader: ImageLoading
     let cachedImageLoader: CachedImageLoader<ThreadSafeCache<MemoryCache<URL, UIImage>>>
 
     init() {
-        let remoteNetwork = RemoteNetwork()
-        let mainThreadNetwork = MainThreadNetwork(network: remoteNetwork)
-        network = mainThreadNetwork
+        let remoteDataLoader = RemoteDataLoader()
+        let mainThreadDataLoader = MainThreadDataLoader(dataLoader: remoteDataLoader)
+        dataLoader = mainThreadDataLoader
 
         let memoryCache = MemoryCache<URL, UIImage>()
         cache = ThreadSafeCache(cache: memoryCache)
 
         modelLoader = RemoteModelLoader(
-            network: network,
+            dataLoader: dataLoader,
             decoder: JSONDecoder()
         )
 
-        imageLoader = ImageLoader(network: network)
+        imageLoader = ImageLoader(dataLoader: dataLoader)
         cachedImageLoader = CachedImageLoader(imageLoader: imageLoader, cache: cache)
     }
 

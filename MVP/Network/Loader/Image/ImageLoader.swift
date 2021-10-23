@@ -1,23 +1,23 @@
 import Foundation
 import UIKit
 
-final class ImageLoader: ImageLoading {
-    enum ImageDataError: Error {
+struct ImageLoader: ImageLoading {
+    enum ImageLoaderError: Error {
         case unSupportedFormat
     }
 
-    private let network: Networking
+    private let dataLoader: DataLoading
 
-    init(network: Networking) {
-        self.network = network
+    init(dataLoader: DataLoading) {
+        self.dataLoader = dataLoader
     }
 
     func load(for url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
-        network.perform(with: url) { result in
+        dataLoader.load(for: url) { result in
             switch result {
             case .success(let data):
                 guard let image = UIImage(data: data) else {
-                    completion(.failure(ImageDataError.unSupportedFormat))
+                    completion(.failure(ImageLoaderError.unSupportedFormat))
                     return
                 }
                 completion(.success(image))

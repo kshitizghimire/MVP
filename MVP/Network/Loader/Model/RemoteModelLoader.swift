@@ -1,27 +1,31 @@
 import Foundation
 
-final class RemoteModelLoader: ModelLoading {
-    let network: Networking
+struct RemoteModelLoader: ModelLoading {
+    enum RemoteModelLoaderError: Error {
+        case decoding
+        case network
+    }
+
+    let dataLoader: DataLoading
     let decoder: JSONDecoder
 
-    init(network: Networking, decoder: JSONDecoder) {
-        self.network = network
+    init(dataLoader: DataLoading, decoder: JSONDecoder) {
+        self.dataLoader = dataLoader
         self.decoder = decoder
     }
 
-    func load<T: Decodable>(for _: T.Type, with url: URL, completionHandler: @escaping (Result<T, Error>) -> Void) {
-        network.perform(with: url) { [weak self] result in
-            guard let self = self else { return }
+    func load<T: Decodable>(for url: URL, with _: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
+        dataLoader.load(for: url) { result in
             switch result {
             case .success(let data):
                 do {
                     let result = try self.decoder.decode(T.self, from: data)
-                    completionHandler(.success(result))
+                    completion(.success(result))
                 } catch {
-                    completionHandler(.failure(error))
+                    completion(.failure(RemoteModelLoaderError.decoding))
                 }
-            case .failure(let error):
-                completionHandler(.failure(error))
+            case .failure:
+                completion(.failure(RemoteModelLoaderError.network))
             }
         }
     }

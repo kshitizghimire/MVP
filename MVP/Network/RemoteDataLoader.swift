@@ -1,7 +1,7 @@
 import Foundation
 
-final class RemoteNetwork: Networking {
-    enum RemoteNetworkError: Error {
+struct RemoteDataLoader: DataLoading {
+    enum RemoteDataLoaderError: Error {
         case general
     }
 
@@ -13,10 +13,10 @@ final class RemoteNetwork: Networking {
         self.session = session
     }
 
-    func perform(with url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
+    func load(for url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
         session.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
-                completion(.failure(RemoteNetworkError.general))
+                completion(.failure(RemoteDataLoaderError.general))
                 return
             }
             completion(.success(data))
