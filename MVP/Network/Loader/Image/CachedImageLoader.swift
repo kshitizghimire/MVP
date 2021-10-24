@@ -1,31 +1,49 @@
 import UIKit
 
 /// A decorator for ImageLoading which enables caching
-final class CachedImageLoader: ImageLoading {
-    private let cache: Caching
+struct CachedImageLoader: ImageLoading {
+    private let imageCache: ImageCacheReferenceType
     private let decoratee: ImageLoading
 
     init(
         imageLoader decoratee: ImageLoading,
-        cache: Caching
+        imageCache: ImageCaching
     ) {
-        self.cache = cache
+        self.imageCache = ImageCacheReferenceType(imageCache)
         self.decoratee = decoratee
     }
 
-    func load(for url: URL, completionHandler: @escaping (Result<UIImage, Error>) -> Void) {
-        if let cacheImage = cache.value(for: url) as? UIImage {
-            completionHandler(.success(cacheImage))
+    func load(for url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        if let cachedImage = imageCache[url] {
+            completion(.success(cachedImage))
         } else {
-            decoratee.load(for: url) { [weak self] result in
-                guard let self = self else { return }
+            decoratee.load(for: url) { result in
                 switch result {
                 case .success(let image):
-                    self.cache.setValue(image, for: url)
-                    completionHandler(.success(image))
+                    imageCache[url] = image
+                    completion(.success(image))
                 case .failure(let error):
-                    completionHandler(.failure(error))
+                    completion(.failure(error))
                 }
+            }
+        }
+    }
+}
+
+private extension CachedImageLoader {
+    final class ImageCacheReferenceType {
+        private var imageCache: ImageCaching
+
+        init(_ imageCache: ImageCaching) {
+            self.imageCache = imageCache
+        }
+
+        subscript(key: AnyHashable) -> UIImage? {
+            get {
+                imageCache[key]
+            }
+            set {
+                imageCache[key] = newValue
             }
         }
     }

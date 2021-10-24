@@ -40,7 +40,7 @@ final class CoinsPresenterTests: XCTestCase {
             Coin(id: "4", symbol: "ADA", name: "Cardano", image: "https://test.com/4"),
             Coin(id: "3", symbol: "UNI", name: "UniSwap", image: "https://test.com/3"),
         ]
-        mockModelLoader.completionHandler?(.success(coins))
+        mockModelLoader.completion?(.success(coins))
         XCTAssertEqual(mockDisplay.sections?.count, 1)
         let section: TableSection = try XCTUnwrap(mockDisplay.sections?[0])
 
