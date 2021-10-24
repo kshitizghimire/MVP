@@ -3,8 +3,8 @@
 import UIKit
 
 final class MockImageLoader: ImageLoading {
-    var completionHandler: ((Result<UIImage, Error>) -> Void)?
-    func load(for _: URL, completionHandler: @escaping (Result<UIImage, Error>) -> Void) {
-        self.completionHandler = completionHandler
+    var completion: ((Result<UIImage, Error>) -> Void)?
+    func load(for _: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
+        self.completion = completion
     }
 }
