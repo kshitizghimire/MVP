@@ -4,18 +4,18 @@ import UIKit
 final class AppNavigator {
     var navigationController: UINavigationController!
     let dataLoader: DataLoading
-    let cache: ThreadSafeCache<MemoryCache<URL, UIImage>>
+    let imageCache: ImageCaching
     let modelLoader: ModelLoading
     let imageLoader: ImageLoading
-    let cachedImageLoader: CachedImageLoader<ThreadSafeCache<MemoryCache<URL, UIImage>>>
+    let cachedImageLoader: CachedImageLoader
 
     init() {
         let remoteDataLoader = RemoteDataLoader()
         let mainThreadDataLoader = MainThreadDataLoader(dataLoader: remoteDataLoader)
         dataLoader = mainThreadDataLoader
 
-        let memoryCache = MemoryCache<URL, UIImage>()
-        cache = ThreadSafeCache(cache: memoryCache)
+        let memoryCache = MemoryImageCache()
+        imageCache = ThreadSafeImageCache(cache: memoryCache)
 
         modelLoader = RemoteModelLoader(
             dataLoader: dataLoader,
@@ -23,7 +23,7 @@ final class AppNavigator {
         )
 
         imageLoader = ImageLoader(dataLoader: dataLoader)
-        cachedImageLoader = CachedImageLoader(imageLoader: imageLoader, cache: cache)
+        cachedImageLoader = CachedImageLoader(imageLoader: imageLoader, imageCache: imageCache)
     }
 
     func start() -> UINavigationController {
@@ -35,7 +35,7 @@ final class AppNavigator {
             modelLoader: modelLoader,
             imageLoader: cachedImageLoader,
             apiUrl: AppConfiguration.coinsApiUrl,
-            cellPlaceholderImage: UIImage(systemName: "car")!,
+            cellPlaceholderImage: UIImage(systemName: "car") ?? UIImage(),
             coinSelected: coinDetailAction
         )
         display.presenter = presenter

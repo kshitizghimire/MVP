@@ -1,14 +1,15 @@
 import Foundation
+import UIKit
 
-struct ThreadSafeCache<T: Caching>: Caching {
-    private var decoratee: T
+struct ThreadSafeImageCache: ImageCaching {
+    private var decoratee: ImageCaching
     private let lockQueue = DispatchQueue(label: "lock.queue", attributes: .concurrent)
 
-    init(cache decoratee: T) {
+    init(cache decoratee: ImageCaching) {
         self.decoratee = decoratee
     }
 
-    subscript(key: T.Key) -> T.Value? {
+    subscript(key: AnyHashable) -> UIImage? {
         get {
             lockQueue.sync {
                 decoratee[key]
