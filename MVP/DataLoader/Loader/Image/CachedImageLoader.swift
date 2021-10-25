@@ -34,17 +34,11 @@ private extension CachedImageLoader {
     final class ImageCacheReferenceType {
         private var imageCache: ImageCaching
 
-        init(_ imageCache: ImageCaching) {
-            self.imageCache = imageCache
-        }
+        init(_ imageCache: ImageCaching) { self.imageCache = imageCache }
 
         subscript(key: AnyHashable) -> UIImage? {
-            get {
-                imageCache[key]
-            }
-            set {
-                imageCache[key] = newValue
-            }
+            get { imageCache[key] }
+            set { imageCache[key] = newValue }
         }
     }
 }

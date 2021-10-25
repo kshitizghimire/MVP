@@ -14,8 +14,12 @@ struct RemoteDataLoader: DataLoading {
     }
 
     func load(for url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
-        session.dataTask(with: url) { data, _, error in
-            guard let data = data, error == nil else {
+        session.dataTask(with: url) { data, response, error in
+            guard let data = data,
+                  let httpResponse = response as? HTTPURLResponse,
+                  (200 ... 299).contains(httpResponse.statusCode),
+                  error == nil
+            else {
                 completion(.failure(RemoteDataLoaderError.general))
                 return
             }

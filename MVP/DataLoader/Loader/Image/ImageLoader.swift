@@ -3,7 +3,7 @@ import UIKit
 
 struct ImageLoader: ImageLoading {
     enum ImageLoaderError: Error {
-        case unSupportedFormat
+        case invalidImage
     }
 
     private let dataLoader: DataLoading
@@ -17,7 +17,7 @@ struct ImageLoader: ImageLoading {
             switch result {
             case .success(let data):
                 guard let image = UIImage(data: data) else {
-                    completion(.failure(ImageLoaderError.unSupportedFormat))
+                    completion(.failure(ImageLoaderError.invalidImage))
                     return
                 }
                 completion(.success(image))

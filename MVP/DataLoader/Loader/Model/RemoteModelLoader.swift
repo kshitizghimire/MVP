@@ -14,12 +14,12 @@ struct RemoteModelLoader: ModelLoading {
         self.decoder = decoder
     }
 
-    func load<T: Decodable>(for url: URL, with _: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
+    func load<T: Decodable>(for url: URL, with type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         dataLoader.load(for: url) { result in
             switch result {
             case .success(let data):
                 do {
-                    let result = try self.decoder.decode(T.self, from: data)
+                    let result = try self.decoder.decode(type, from: data)
                     completion(.success(result))
                 } catch {
                     completion(.failure(RemoteModelLoaderError.decoding))

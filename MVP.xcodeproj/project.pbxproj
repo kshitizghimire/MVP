@@ -158,9 +158,9 @@
 		7642B8AD26FDF52100489E81 /* Display */ = {
 			isa = PBXGroup;
 			children = (
-				76DDC2AF2700089D009FE5C7 /* LabelAndImage */,
 				7642B8AE26FDF54100489E81 /* Displaying.swift */,
 				7642B8B026FDF5B300489E81 /* Label */,
+				76DDC2AF2700089D009FE5C7 /* LabelAndImage */,
 				7642B8BB26FDFAD700489E81 /* NavigationItem */,
 				7642B8BD26FDFB2900489E81 /* Table */,
 				7642B8BC26FDFB1000489E81 /* Title */,
@@ -233,14 +233,14 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
-		7667D6722724DFD70066EA6B /* Image */ = {
+		7667D6752725073F0066EA6B /* ImageCache */ = {
 			isa = PBXGroup;
 			children = (
 				76DDC2A726FFF86E009FE5C7 /* ImageCaching.swift */,
 				76DDC2A926FFF8F0009FE5C7 /* MemoryImageCache.swift */,
 				761C2AED271EE89B002348AE /* ThreadSafeImageCache.swift */,
 			);
-			path = Image;
+			path = ImageCache;
 			sourceTree = "<group>";
 		};
 		76C7770127009D75003E02B6 /* MVPTests */ = {
@@ -256,7 +256,7 @@
 			path = MVPTests;
 			sourceTree = "<group>";
 		};
-		76DDC29526FF2D27009FE5C7 /* Network */ = {
+		76DDC29526FF2D27009FE5C7 /* DataLoader */ = {
 			isa = PBXGroup;
 			children = (
 				76DDC29626FF2DF8009FE5C7 /* DataLoading.swift */,
@@ -264,7 +264,7 @@
 				76DDC29A26FF3010009FE5C7 /* MainThreadDataLoader.swift */,
 				76DDC2A526FF4C39009FE5C7 /* Loader */,
 			);
-			path = Network;
+			path = DataLoader;
 			sourceTree = "<group>";
 		};
 		76DDC2A226FF41B1009FE5C7 /* Coins */ = {
@@ -289,7 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				7638E4E5270B123B0098F023 /* Cache.swift */,
-				7667D6722724DFD70066EA6B /* Image */,
+				7667D6752725073F0066EA6B /* ImageCache */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -345,15 +345,15 @@
 		76ED8D6E26D8D8B2002FD6EF /* MVP */ = {
 			isa = PBXGroup;
 			children = (
-				76DDC2A626FFF7E1009FE5C7 /* Cache */,
-				76DDC29526FF2D27009FE5C7 /* Network */,
-				7642B8BF26FDFB8800489E81 /* Screens */,
-				7642B8AC26FDC6F300489E81 /* Main */,
-				7642B8BE26FDFB5100489E81 /* Presenter */,
-				7642B8AD26FDF52100489E81 /* Display */,
-				7642B8A926FDBDED00489E81 /* Utilities */,
-				76ED8D7826D8D8B4002FD6EF /* Assets.xcassets */,
 				76ED8D7D26D8D8B4002FD6EF /* Info.plist */,
+				76ED8D7826D8D8B4002FD6EF /* Assets.xcassets */,
+				76DDC2A626FFF7E1009FE5C7 /* Cache */,
+				7642B8AD26FDF52100489E81 /* Display */,
+				7642B8AC26FDC6F300489E81 /* Main */,
+				76DDC29526FF2D27009FE5C7 /* DataLoader */,
+				7642B8BE26FDFB5100489E81 /* Presenter */,
+				7642B8BF26FDFB8800489E81 /* Screens */,
+				7642B8A926FDBDED00489E81 /* Utilities */,
 			);
 			path = MVP;
 			sourceTree = "<group>";
