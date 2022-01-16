@@ -30,10 +30,7 @@ final class CoinsPresenter: Presenting {
     func viewDidLoad() {
         display.set(title: title)
 
-        modelLoader.load(
-            for: apiUrl,
-            with: [Coin].self
-        ) { [weak self] result in
+        modelLoader.load(for: apiUrl) { [weak self] (result: Result<[Coin], Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let coins):
